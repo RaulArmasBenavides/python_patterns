@@ -1,3 +1,4 @@
+from LogManager import LogManager
 class SingletonMeta(type):
     """
     The Singleton class can be implemented in different ways in Python. Some
@@ -30,11 +31,12 @@ class Singleton(metaclass=SingletonMeta):
 
 if __name__ == "__main__":
     # The client code.
-
+    logger = LogManager().get_logger()
+    logger.info("Usando LogManager en otro archivo.")
     s1 = Singleton()
     s2 = Singleton()
 
     if id(s1) == id(s2):
-        print("Singleton works, both variables contain the same instance.")
+        logger.info("Singleton works, both variables contain the same instance..")
     else:
-        print("Singleton failed, variables contain different instances.")
+        logger.info("Singleton failed, variables contain different instances..")
